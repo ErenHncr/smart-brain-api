@@ -9,6 +9,7 @@ services:
     working_dir: /usr/src/smart-brain-api
     environment: 
       POSTGRES_URI: postgres://sally:secret@postgres:5432/smart-brain-docker
+      REDIS_URI: redis://redis:6379
     ports: ["3000:3000"]
     volumes: [./:/usr/src/smart-brain-api]
   
@@ -24,3 +25,8 @@ services:
     # veritabanına bağlanmak için portun 5432'den
     # farklı bir değer alması gerekiyor
     ports: ["5431:5432"]
+
+  # Redis
+  redis:
+    image: "redis:alpine"
+    ports: ["6379:6379"]
