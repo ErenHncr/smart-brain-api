@@ -5,7 +5,8 @@ services:
   smart-brain-api:
     container_name: backend
     build: ./
-    command: bash -c "npm audit fix --force && npm start"
+    # bcrypt should be uninstalled and then reinstalled to work
+    command: /bin/sh -c "./start.sh"
     working_dir: /usr/src/smart-brain-api
     environment: 
       POSTGRES_URI: postgres://sally:secret@postgres:5432/smart-brain-docker
