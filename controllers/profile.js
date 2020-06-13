@@ -16,7 +16,7 @@ const handleProfileUpdate = (req, res, db) => {
   const { name, age, pet } = req.body.formInput;
   db('users')
     .where({ id })
-    .update({ name })
+    .update({ name, age, pet })
     .then(resp => {
       if (resp) {
         res.json('success');
@@ -24,7 +24,7 @@ const handleProfileUpdate = (req, res, db) => {
         res.status(400).json('unable to update')
       }
     })
-    .catch(err => res.status(400).json('error updatinh user'));
+    .catch(err => res.status(400).json('error updating user'));
 }
 
 module.exports = {
