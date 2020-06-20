@@ -34,8 +34,8 @@ app.post('/profile/:id', auth.requireAuth, (req, res) => { profile.handleProfile
 app.put('/image', auth.requireAuth, (req, res) => { image.handleImage(req, res, db) })
 app.post('/imageurl', auth.requireAuth, (req, res) => { image.handleApiCall(req, res) })
 app.post('/signout', signout.revokeAuth);
-app.post('/upload/:id', (req, res) => { profilImage.uploadImageToS3(req, res) });
-app.get('/getUrl/:id', (req, res) => { profilImage.getImageFromS3(req, res) });
+app.post('/upload/:id', auth.requireAuth, (req, res) => { profilImage.uploadImageToS3(req, res) });
+app.get('/getUrl/:id', auth.requireAuth, (req, res) => { profilImage.getImageFromS3(req, res) });
 app.listen(3000, () => {
   console.log('app is running on port 3000');
 })
